@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - Carnicería Delicias a tu Diestra</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="registro-body">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="img/logoCarniceria.png" alt="Logo Carnicería Delicias" class="logo-image">
+                    </div>
+                    <span class="logo-text">Carnicería Delicias a tu Diestra</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+                        <li><a href="carrito.html" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="carrito-badge">0</span>
+                            </a></li>
+                        <li><a href="login.html" class="nav-link">Iniciar Sesión</a></li>
+                        <li><a href="registro.html" class="btn btn-primary active">Registrarse</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="fondo-autenticacion">
+            <div class="fondo-autenticacion-imagen">
+                <div class="fondo-autenticacion-overlay"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="contenedor-formulario-autenticacion">
+                <!-- Registration Form -->
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <button type="button" class="cerrar-formulario" id="cerrar-registro" title="Cerrar formulario">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <h1 class="auth-title">Crear Cuenta</h1>
+                        <p class="auth-subtitle">Únete a nuestra comunidad</p>
+                    </div>
+
+                    <form class="auth-form" id="registro-form">
+                        <!-- Name Fields -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" id="apellido" name="apellido" class="form-input"
+                                    placeholder="Tu apellido" required>
+                            </div>
+                        </div>
+
+                        <!-- Document Type and Number -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipo_documento" class="form-label">Tipo de Documento</label>
+                                <select id="tipo_documento" name="tipo_documento" class="form-select" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="CC">Cédula de Ciudadanía</option>
+                                    <option value="CE">Cédula de Extranjería</option>
+                                    <option value="TI">Tarjeta de Identidad</option>
+                                    <option value="RC">Registro Civil</option>
+                                    <option value="NIT">NIT</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="numero_documento" class="form-label">Número de Documento</label>
+                                <input type="text" id="numero_documento" name="numero_documento" class="form-input"
+                                    placeholder="12345678" required>
+                            </div>
+                        </div>
+
+                        <!-- Dirección Field -->
+                        <div class="form-group">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <div class="input-group">
+                                <i class="fas fa-map-marker-alt input-icon"></i>
+                                <input type="text" id="direccion" name="direccion" class="form-input"
+                                    placeholder="Calle 123 #45-67, Barrio Centro" required>
+                            </div>
+                            <div class="form-error" id="direccion-error"></div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" class="form-input"
+                                    placeholder="tu@email.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div class="form-group">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <div class="input-group">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="telefono" name="telefono" class="form-input"
+                                    placeholder="+57 123 456 7890" required>
+                            </div>
+                        </div>
+
+                        <!-- Password Fields -->
+                        <div class="form-group">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="password" name="password" class="form-input"
+                                    placeholder="Mínimo 8 caracteres" required>
+                                <button type="button" class="password-toggle" id="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="confirm-password" name="confirm_password" class="form-input"
+                                    placeholder="Repite tu contraseña" required>
+                                <button type="button" class="password-toggle" id="toggle-confirm-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-group">
+                            <label class="checkbox-label terms-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkmark"></span>
+                                Acepto los <a href="#" class="terms-link">términos y condiciones</a> y la <a href="#"
+                                    class="terms-link">política de privacidad</a>
+                            </label>
+                        </div>
+
+                        <!-- Register Button -->
+                        <button type="submit" class="btn btn-primary btn-large btn-full">
+                            Crear Cuenta
+                        </button>
+
+                        <!-- Login Link -->
+                        <div class="auth-footer">
+                            <p>¿Ya tienes una cuenta? <a href="login.html" class="auth-link">Inicia sesión aquí</a></p>
+                        </div>
+
+                        <!-- Social Registration Divider -->
+                        <div class="divider">
+                            <span>O regístrate con</span>
+                        </div>
+
+                        <!-- Social Registration Buttons -->
+                        <div class="social-login">
+                            <button type="button" class="btn btn-social btn-google">
+                                <i class="fab fa-google"></i>
+                                Google
+                            </button>
+                            <button type="button" class="btn btn-social btn-facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                Facebook
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

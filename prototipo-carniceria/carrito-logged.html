@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Carnicería Delicias a tu Diestra</title>
+    <meta name="description" content="Gestiona tu carrito de compras con los mejores productos de carnicería">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="img/logoCarniceria.png" alt="Logo Carnicería Delicias" class="logo-image">
+                    </div>
+                    <span class="logo-text">Carnicería Delicias a tu Diestra</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index-logged.html" class="nav-link">Inicio</a></li>
+                        <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+                        <li><a href="carrito-logged.html" class="nav-link active">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="carrito-badge" id="carrito-badge">3</span>
+                            </a></li>
+                        
+                        <!-- Usuario logueado -->
+                        <li class="nav-user-logged" id="nav-user-logged" style="display: flex;">
+                            <div class="user-dropdown">
+                                <button class="user-button" id="user-button">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span id="user-name">Juan Pérez</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="user-menu" id="user-menu">
+                                    <a href="#" class="user-menu-item" id="user-profile">
+                                        <i class="fas fa-user"></i>
+                                        Mi Perfil
+                                    </a>
+                                    <a href="#" class="user-menu-item" id="user-orders">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Mis Pedidos
+                                    </a>
+                                    <div class="user-menu-divider"></div>
+                                    <a href="#" class="user-menu-item" id="user-logout">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index-logged.html" class="breadcrumb-link">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+                <span class="breadcrumb-separator">></span>
+                <span class="breadcrumb-current">Carrito de Compras</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Carrito Principal -->
+    <main class="main-content">
+        <div class="container">
+            <div class="carrito-page">
+                <!-- Header del Carrito -->
+                <div class="carrito-page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-shopping-cart"></i>
+                        Carrito de Compras
+                    </h1>
+                    <p class="page-subtitle">Revisa y gestiona los productos en tu carrito</p>
+                </div>
+
+                <!-- Contenido del Carrito -->
+                <div class="carrito-page-content">
+                    <div class="carrito-container" id="carrito-container">
+                        <!-- El contenido se cargará dinámicamente -->
+                    </div>
+
+                    <!-- Sidebar de Resumen -->
+                    <div class="carrito-sidebar">
+                        <div class="resumen-pedido">
+                            <h3>Resumen del Pedido</h3>
+                            <div class="resumen-items" id="resumen-items">
+                                <!-- Se llenará dinámicamente -->
+                            </div>
+                            <div class="resumen-total" id="resumen-total">
+                                <!-- Se llenará dinámicamente -->
+                            </div>
+                            <div class="resumen-acciones">
+                                <button class="btn btn-secondary btn-full" onclick="limpiarCarritoLogged()">
+                                    <i class="fas fa-trash-alt"></i> Limpiar Carrito
+                                </button>
+                                <button class="btn btn-primary btn-full" onclick="procederAlPagoLogged()">
+                                    <i class="fas fa-credit-card"></i> Proceder al Pago
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Información de Entrega -->
+                        <div class="info-entrega">
+                            <h4><i class="fas fa-truck"></i> Información de Entrega</h4>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Entrega en 24-48 horas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Productos frescos garantizados</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Pago contra entrega</span>
+                            </div>
+                        </div>
+
+                        <!-- Productos Recomendados -->
+                        <div class="productos-recomendados">
+                            <h4><i class="fas fa-star"></i> También te puede interesar</h4>
+                            <div class="recomendados-grid" id="recomendados-grid">
+                                <!-- Se llenará con productos recomendados -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <img src="img/logoCarniceria.png" alt="Logo Carnicería Delicias" class="logo-image">
+                        </div>
+                        <span class="logo-text">Carnicería Delicias a tu Diestra</span>
+                    </div>
+                    <p class="footer-description">Los mejores cortes de carne fresca, pollo, cerdo y embutidos de la más
+                        alta calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Productos</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogo.html?categoria=res">Pollo</a></li>
+                        <li><a href="catalogo.html?categoria=res">Carne de Res</a></li>
+                        <li><a href="catalogo.html?categoria=cerdo">Carne de Cerdo</a></li>
+                        <li><a href="catalogo.html?categoria=embutidos">Embutidos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogo.html">Catálogo</a></li>
+                        <li><a href="carrito-logged.html">Carrito</a></li>
+                        <li><a href="#perfil">Mi Cuenta</a></li>
+                        <li><a href="#admin">Administrador</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +57 321 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@carniceria.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Carrera 26 # 28 - 02, Palmira, Valle - Colombia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Carnicería Delicias a tu Diestra. Todos los derechos reservados.</p>
+                <p class="scripture">"Delicias a tu diestra" - Salmos 16:11</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/carrito.js"></script>
+    <script>
+        // Simular usuario logueado y carrito para el prototipo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular carrito con productos
+            const carritoPrototipo = [
+                {
+                    id_producto: 1,
+                    nombre: "Pechuga de Pollo",
+                    precio_unitario: 8500,
+                    cantidad: 2,
+                    unidad_medida: "kg",
+                    imagen_url: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                },
+                {
+                    id_producto: 2,
+                    nombre: "Lomo de Res",
+                    precio_unitario: 25000,
+                    cantidad: 1,
+                    unidad_medida: "kg",
+                    imagen_url: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                }
+            ];
+            
+            // Guardar carrito en localStorage
+            localStorage.setItem('carrito', JSON.stringify(carritoPrototipo));
+            
+            // Simular usuario logueado
+            const usuarioPrototipo = {
+                id: 1,
+                nombre: 'Juan',
+                apellido: 'Pérez',
+                email: 'juan@email.com',
+                tipo_documento: 'CC',
+                numero_documento: '12345678',
+                direccion: 'Calle 123 #45-67',
+                telefono: '+57 300 123 4567',
+                rol: 'cliente'
+            };
+            
+            localStorage.setItem('usuario', JSON.stringify(usuarioPrototipo));
+            
+            // Actualizar el carrito global
+            if (typeof carrito !== 'undefined') {
+                carrito = carritoPrototipo;
+            }
+            
+            // Renderizar página del carrito
+            renderizarPaginaCarritoLogged();
+            cargarProductosRecomendadosLogged();
+            
+            // Configurar eventos del dropdown de usuario
+            const userButton = document.getElementById('user-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            if (userButton && userMenu) {
+                userButton.addEventListener('click', () => {
+                    userMenu.classList.toggle('show');
+                });
+                
+                // Cerrar dropdown al hacer clic fuera
+                document.addEventListener('click', (e) => {
+                    if (!userButton.contains(e.target) && !userMenu.contains(e.target)) {
+                        userMenu.classList.remove('show');
+                    }
+                });
+            }
+        });
+        
+        function renderizarPaginaCarritoLogged() {
+            const container = document.getElementById('carrito-container');
+            const resumenItems = document.getElementById('resumen-items');
+            const resumenTotal = document.getElementById('resumen-total');
+
+            if (!container) return;
+
+            const carritoPrototipo = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            if (carritoPrototipo.length === 0) {
+                container.innerHTML = `
+                    <div class="carrito-vacio-page">
+                        <div class="carrito-vacio-content">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h2>Tu carrito está vacío</h2>
+                            <p>Agrega algunos productos deliciosos para comenzar tu pedido</p>
+                            <div class="carrito-vacio-acciones">
+                                <a href="catalogo.html" class="btn btn-primary btn-large">
+                                    <i class="fas fa-store"></i> Ver Catálogo
+                                </a>
+                                <a href="index-logged.html" class="btn btn-secondary btn-large">
+                                    <i class="fas fa-home"></i> Ir al Inicio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                if (resumenItems) resumenItems.innerHTML = '';
+                if (resumenTotal) resumenTotal.innerHTML = '';
+                return;
+            }
+
+            // Renderizar items del carrito
+            container.innerHTML = `
+                <div class="carrito-items-page">
+                    ${carritoPrototipo.map(item => `
+                        <div class="carrito-item-page" data-producto-id="${item.id_producto}">
+                            <div class="carrito-item-imagen">
+                                ${item.imagen_url ? 
+                                    `<img src="${item.imagen_url}" alt="${item.nombre}" loading="lazy">` :
+                                    obtenerIconoCategoriaLogged(item.nombre)
+                                }
+                            </div>
+                            <div class="carrito-item-info">
+                                <h3 class="carrito-item-nombre">${item.nombre}</h3>
+                                <p class="carrito-item-precio">$${item.precio_unitario.toLocaleString()}/${item.unidad_medida}</p>
+                                <div class="carrito-item-cantidad">
+                                    <button class="cantidad-btn" onclick="actualizarCantidadLogged(${item.id_producto}, ${item.cantidad - 1})" 
+                                            ${item.cantidad <= 1 ? 'disabled' : ''}>-</button>
+                                    <input type="number" class="cantidad-input" value="${item.cantidad}" min="1" 
+                                           onchange="actualizarCantidadLogged(${item.id_producto}, parseInt(this.value))"
+                                           onblur="validarCantidadLogged(${item.id_producto}, this.value)">
+                                    <button class="cantidad-btn" onclick="actualizarCantidadLogged(${item.id_producto}, ${item.cantidad + 1})">+</button>
+                                </div>
+                            </div>
+                            <div class="carrito-item-acciones">
+                                <div class="carrito-item-subtotal">$${(item.precio_unitario * item.cantidad).toLocaleString()}</div>
+                                <button class="btn btn-secondary btn-sm" onclick="eliminarDelCarritoLogged(${item.id_producto})" 
+                                        title="Eliminar del carrito">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // Renderizar resumen
+            if (resumenItems && resumenTotal) {
+                const total = obtenerTotalCarritoLogged();
+                const totalItems = carritoPrototipo.reduce((total, item) => total + item.cantidad, 0);
+
+                resumenItems.innerHTML = `
+                    <div class="resumen-item">
+                        <span>Productos (${totalItems}):</span>
+                        <span>$${total.toLocaleString()}</span>
+                    </div>
+                    <div class="resumen-item">
+                        <span>Envío:</span>
+                        <span>Gratis</span>
+                    </div>
+                `;
+
+                resumenTotal.innerHTML = `
+                    <div class="resumen-total-item">
+                        <span>Total:</span>
+                        <span>$${total.toLocaleString()}</span>
+                    </div>
+                `;
+            }
+        }
+        
+        function obtenerIconoCategoriaLogged(nombre) {
+            const categoria = nombre.toLowerCase();
+            if (categoria.includes('pollo')) {
+                return '<i class="fas fa-drumstick-bite"></i>';
+            } else if (categoria.includes('res') || categoria.includes('ternera')) {
+                return '<i class="fas fa-hamburger"></i>';
+            } else if (categoria.includes('cerdo') || categoria.includes('panceta')) {
+                return '<i class="fas fa-bacon"></i>';
+            } else if (categoria.includes('chorizo') || categoria.includes('salchicha') || categoria.includes('embutido')) {
+                return '<i class="fas fa-sausage"></i>';
+            }
+            return '<i class="fas fa-meat"></i>';
+        }
+        
+        function validarCantidadLogged(productoId, valor) {
+            const cantidad = parseInt(valor);
+            if (isNaN(cantidad) || cantidad < 1) {
+                actualizarCantidadLogged(productoId, 1);
+            } else {
+                actualizarCantidadLogged(productoId, cantidad);
+            }
+        }
+        
+        function actualizarCantidadLogged(productoId, nuevaCantidad) {
+            let carritoPrototipo = JSON.parse(localStorage.getItem('carrito')) || [];
+            const item = carritoPrototipo.find(item => item.id_producto === productoId);
+            
+            if (item) {
+                if (nuevaCantidad <= 0) {
+                    eliminarDelCarritoLogged(productoId);
+                } else {
+                    item.cantidad = nuevaCantidad;
+                    localStorage.setItem('carrito', JSON.stringify(carritoPrototipo));
+                    
+                    // Actualizar badge
+                    const badge = document.getElementById('carrito-badge');
+                    if (badge) {
+                        const totalItems = carritoPrototipo.reduce((total, item) => total + item.cantidad, 0);
+                        badge.textContent = totalItems;
+                    }
+                    
+                    // Re-renderizar página
+                    renderizarPaginaCarritoLogged();
+                }
+            }
+        }
+        
+        function eliminarDelCarritoLogged(productoId) {
+            let carritoPrototipo = JSON.parse(localStorage.getItem('carrito')) || [];
+            carritoPrototipo = carritoPrototipo.filter(item => item.id_producto !== productoId);
+            localStorage.setItem('carrito', JSON.stringify(carritoPrototipo));
+            
+            // Actualizar badge
+            const badge = document.getElementById('carrito-badge');
+            if (badge) {
+                const totalItems = carritoPrototipo.reduce((total, item) => total + item.cantidad, 0);
+                badge.textContent = totalItems;
+                badge.style.display = totalItems > 0 ? 'inline' : 'none';
+            }
+            
+            // Re-renderizar página
+            renderizarPaginaCarritoLogged();
+        }
+        
+        function obtenerTotalCarritoLogged() {
+            const carritoPrototipo = JSON.parse(localStorage.getItem('carrito')) || [];
+            return carritoPrototipo.reduce((total, item) => total + (item.precio_unitario * item.cantidad), 0);
+        }
+        
+        function limpiarCarritoLogged() {
+            localStorage.setItem('carrito', JSON.stringify([]));
+            
+            // Actualizar badge
+            const badge = document.getElementById('carrito-badge');
+            if (badge) {
+                badge.textContent = '0';
+                badge.style.display = 'none';
+            }
+            
+            // Re-renderizar página
+            renderizarPaginaCarritoLogged();
+        }
+        
+        function procederAlPagoLogged() {
+            const carritoPrototipo = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+            if (carritoPrototipo.length === 0) {
+                alert('Tu carrito está vacío. Agrega algunos productos antes de proceder al pago.');
+                return;
+            }
+            
+            // Redirigir al checkout
+            window.location.href = 'checkout.html';
+        }
+        
+        async function cargarProductosRecomendadosLogged() {
+            try {
+                // Simular productos recomendados
+                const productosRecomendados = [
+                    {
+                        id: 3,
+                        nombre: "Costilla de Cerdo",
+                        precio: 12000,
+                        imagen_url: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    },
+                    {
+                        id: 4,
+                        nombre: "Chorizo Artesanal",
+                        precio: 18000,
+                        imagen_url: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    }
+                ];
+                
+                const recomendadosGrid = document.getElementById('recomendados-grid');
+                
+                if (recomendadosGrid && productosRecomendados.length > 0) {
+                    recomendadosGrid.innerHTML = productosRecomendados.map(producto => `
+                        <div class="recomendado-item">
+                            <div class="recomendado-imagen">
+                                <img src="${producto.imagen_url}" alt="${producto.nombre}">
+                            </div>
+                            <div class="recomendado-info">
+                                <h5>${producto.nombre}</h5>
+                                <p class="recomendado-precio">$${producto.precio.toLocaleString()}</p>
+                                <button class="btn btn-primary btn-sm" onclick="agregarAlCarritoLogged(${producto.id})">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error al cargar productos recomendados:', error);
+            }
+        }
+        
+        function agregarAlCarritoLogged(productoId) {
+            // Simular agregar producto al carrito
+            alert(`Producto ${productoId} agregado al carrito`);
+        }
+        
+        // Funciones globales para uso en HTML
+        window.actualizarCantidadLogged = actualizarCantidadLogged;
+        window.eliminarDelCarritoLogged = eliminarDelCarritoLogged;
+        window.limpiarCarritoLogged = limpiarCarritoLogged;
+        window.procederAlPagoLogged = procederAlPagoLogged;
+        window.validarCantidadLogged = validarCantidadLogged;
+        window.agregarAlCarritoLogged = agregarAlCarritoLogged;
+    </script>
+</body>
+
+</html>

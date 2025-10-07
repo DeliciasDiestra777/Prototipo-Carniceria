@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Carnicería Delicias a tu Diestra</title>
+    <meta name="description" content="Gestiona tu carrito de compras con los mejores productos de carnicería">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="img/logoCarniceria.png" alt="Logo Carnicería Delicias" class="logo-image">
+                    </div>
+                    <span class="logo-text">Carnicería Delicias a tu Diestra</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+                        <li><a href="carrito.html" class="nav-link active">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="carrito-badge" id="carrito-badge">0</span>
+                            </a></li>
+                        <!-- Área de usuario (se muestra cuando no está logueado) -->
+                        <li class="nav-user-area" id="nav-user-area" style="display: flex;">
+                            <a href="login.html" class="nav-link" id="login-link" target="_self">Iniciar Sesión</a>
+                            <a href="registro.html" class="btn btn-primary" id="registro-link"
+                                target="_self">Registrarse</a>
+                        </li>
+
+                        <!-- Usuario logueado (se muestra cuando está logueado) -->
+                        <li class="nav-user-logged" id="nav-user-logged" style="display: none;">
+                            <div class="user-dropdown">
+                                <button class="user-button" id="user-button">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span id="user-name">Usuario</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="user-menu" id="user-menu">
+                                    <a href="#" class="user-menu-item" id="user-profile">
+                                        <i class="fas fa-user"></i>
+                                        Mi Perfil
+                                    </a>
+                                    <a href="#" class="user-menu-item" id="user-orders">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Mis Pedidos
+                                    </a>
+                                    <div class="user-menu-divider"></div>
+                                    <a href="#" class="user-menu-item" id="user-logout">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+                <span class="breadcrumb-separator">></span>
+                <span class="breadcrumb-current">Carrito de Compras</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Carrito Principal -->
+    <main class="main-content">
+        <div class="container">
+            <div class="carrito-page">
+                <!-- Header del Carrito -->
+                <div class="carrito-page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-shopping-cart"></i>
+                        Carrito de Compras
+                    </h1>
+                    <p class="page-subtitle">Revisa y gestiona los productos en tu carrito</p>
+                </div>
+
+                <!-- Contenido del Carrito -->
+                <div class="carrito-page-content">
+                    <div class="carrito-container" id="carrito-container">
+                        <!-- El contenido se cargará dinámicamente -->
+                    </div>
+
+                    <!-- Sidebar de Resumen -->
+                    <div class="carrito-sidebar">
+                        <div class="resumen-pedido">
+                            <h3>Resumen del Pedido</h3>
+                            <div class="resumen-items" id="resumen-items">
+                                <!-- Se llenará dinámicamente -->
+                            </div>
+                            <div class="resumen-total" id="resumen-total">
+                                <!-- Se llenará dinámicamente -->
+                            </div>
+                            <div class="resumen-acciones">
+                                <button class="btn btn-secondary btn-full" onclick="limpiarCarrito()">
+                                    <i class="fas fa-trash-alt"></i> Limpiar Carrito
+                                </button>
+                                <button class="btn btn-primary btn-full" onclick="procederAlPago()">
+                                    <i class="fas fa-credit-card"></i> Proceder al Pago
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Información de Entrega -->
+                        <div class="info-entrega">
+                            <h4><i class="fas fa-truck"></i> Información de Entrega</h4>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Entrega en 24-48 horas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Productos frescos garantizados</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Pago contra entrega</span>
+                            </div>
+                        </div>
+
+                        <!-- Productos Recomendados -->
+                        <div class="productos-recomendados">
+                            <h4><i class="fas fa-star"></i> También te puede interesar</h4>
+                            <div class="recomendados-grid" id="recomendados-grid">
+                                <!-- Se llenará con productos recomendados -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <img src="img/logoCarniceria.png" alt="Logo Carnicería Delicias" class="logo-image">
+                        </div>
+                        <span class="logo-text">Carnicería Delicias a tu Diestra</span>
+                    </div>
+                    <p class="footer-description">Los mejores cortes de carne fresca, pollo, cerdo y embutidos de la más
+                        alta calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Productos</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogo.html?categoria=res">Pollo</a></li>
+                        <li><a href="catalogo.html?categoria=res">Carne de Res</a></li>
+                        <li><a href="catalogo.html?categoria=cerdo">Carne de Cerdo</a></li>
+                        <li><a href="catalogo.html?categoria=embutidos">Embutidos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogo.html">Catálogo</a></li>
+                        <li><a href="carrito.html">Carrito</a></li>
+                        <li><a href="#perfil">Mi Cuenta</a></li>
+                        <li><a href="#admin">Administrador</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +57 321 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@carniceria.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Carrera 26 # 28 - 02, Palmira, Valle - Colombia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Carnicería Delicias a tu Diestra. Todos los derechos reservados.</p>
+                <p class="scripture">"Delicias a tu diestra" - Salmos 16:11</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformación de Productos - Carnicería Delicias</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="img/logoCarniceria.png" alt="Logo Carnicería Delicias" class="logo-image">
+                    </div>
+                    <span class="logo-text">Carnicería Delicias a tu Diestra</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Inicio</a></li>
+                        <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+                        <li><a href="carrito.html" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="carrito-badge" id="carrito-badge">0</span>
+                            </a></li>
+                        <!-- Usuario logueado -->
+                        <li class="nav-user-logged" id="nav-user-logged" style="display: flex;">
+                            <div class="user-dropdown">
+                                <button class="user-button" id="user-button">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span id="user-name">Administrador</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="user-menu" id="user-menu">
+                                    <a href="#" class="user-menu-item" id="user-profile">
+                                        <i class="fas fa-user"></i>
+                                        Mi Perfil
+                                    </a>
+                                    <a href="#" class="user-menu-item" id="user-orders">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Mis Pedidos
+                                    </a>
+                                    <a href="#" class="user-menu-item" id="user-admin">
+                                        <i class="fas fa-cogs"></i>
+                                        Administración
+                                    </a>
+                                    <a href="transformacion.html" class="user-menu-item active" id="user-transformaciones">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        Transformaciones
+                                    </a>
+                                    <div class="user-menu-divider"></div>
+                                    <a href="#" class="user-menu-item" id="user-logout">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal de Transformación de Productos -->
+    <div class="modal-transformacion mostrar" id="modal-transformacion">
+        <div class="modal-transformacion-content">
+            <div class="modal-transformacion-header">
+                <div class="modal-header-content">
+                    <div class="modal-logo">
+                        <img src="img/logoCarniceria.png" alt="Carnicería Delicias" class="modal-logo-image">
+                        <div class="modal-logo-text">
+                            <h2>Registrar Proceso de Transformación</h2>
+                        </div>
+                    </div>
+                    <button class="modal-transformacion-close" id="cerrar-transformacion">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-transformacion-body">
+                <form class="formulario-transformacion" id="formulario-transformacion">
+                    <div class="form-grid">
+                        <!-- Columna Izquierda - Productos de Entrada -->
+                        <div class="form-column">
+                            <div class="form-section">
+                                <h3 class="form-section-title">
+                                    <i class="fas fa-arrow-down"></i>
+                                    Productos de Entrada (Insumos)
+                                </h3>
+
+                                <div class="form-group">
+                                    <label for="producto-entrada" class="form-label">
+                                        Seleccionar Insumos <span class="required">*</span>
+                                    </label>
+                                    <div class="multi-select-container">
+                                        <div class="multi-select-dropdown" id="multi-select-dropdown">
+                                            <div class="multi-select-selected" id="multi-select-selected">
+                                                <span class="placeholder">Selecciona los insumos...</span>
+                                                <i class="fas fa-chevron-down"></i>
+                                            </div>
+                                            <div class="multi-select-options" id="multi-select-options">
+                                                <!-- Las opciones se cargarán dinámicamente -->
+                            </div>
+                                        </div>
+                                        <div class="selected-items" id="selected-items">
+                                            <!-- Los elementos seleccionados se mostrarán aquí -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cantidad-entrada" class="form-label">
+                                        Cantidad Total de Entrada <span class="required">*</span>
+                                    </label>
+                                    <div class="input-with-unit">
+                                        <input type="number" id="cantidad-entrada" name="cantidad-entrada"
+                                            class="form-input" min="0" step="0.01" placeholder="0.00" required>
+                                        <select class="form-select unit-select" id="unidad-entrada">
+                                            <option value="kg">kg</option>
+                                            <option value="g">g</option>
+                                            <option value="lb">lb</option>
+                                            <option value="unidad">unidad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Columna Derecha - Productos de Salida -->
+                        <div class="form-column">
+                            <div class="form-section">
+                                <h3 class="form-section-title">
+                                    <i class="fas fa-arrow-up"></i>
+                                    Producto de Salida (Resultado)
+                                </h3>
+
+                                <div class="form-group">
+                                    <label for="producto-salida" class="form-label">
+                                        Producto Resultante <span class="required">*</span>
+                                    </label>
+                                    <select id="producto-salida" name="producto-salida" class="form-select" required>
+                                        <option value="">Selecciona el producto resultante...</option>
+                                        <!-- Las opciones se cargarán dinámicamente -->
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cantidad-salida" class="form-label">
+                                        Cantidad de Salida <span class="required">*</span>
+                                    </label>
+                                    <div class="input-with-unit">
+                                        <input type="number" id="cantidad-salida" name="cantidad-salida"
+                                            class="form-input" min="0" step="0.01" placeholder="0.00" required>
+                                        <select class="form-select unit-select" id="unidad-salida">
+                                            <option value="kg">kg</option>
+                                            <option value="g">g</option>
+                                            <option value="lb">lb</option>
+                                            <option value="unidad">unidad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información del Proceso -->
+                    <div class="form-section process-info">
+                        <h3 class="form-section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Información del Proceso
+                        </h3>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fecha-proceso" class="form-label">
+                                    Fecha del Proceso <span class="required">*</span>
+                                </label>
+                                <input type="date" id="fecha-proceso" name="fecha-proceso" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="usuario-responsable" class="form-label">
+                                    Usuario Responsable <span class="required">*</span>
+                                </label>
+                                <input type="text" id="usuario-responsable" name="usuario-responsable"
+                                    class="form-input" placeholder="Nombre del responsable" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observaciones" class="form-label">
+                                Observaciones
+                            </label>
+                            <textarea id="observaciones" name="observaciones" class="form-textarea" rows="3"
+                                placeholder="Notas adicionales sobre el proceso de transformación..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="limpiar-formulario">
+                            <i class="fas fa-eraser"></i>
+                            Limpiar Formulario
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="guardar-transformacion">
+                            <i class="fas fa-save"></i>
+                            Guardar Transformación
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Historial de Transformaciones -->
+    <div class="historial-transformaciones" id="historial-transformaciones">
+        <div class="container">
+            <div class="historial-header">
+                <h2><i class="fas fa-history"></i> Historial de Transformaciones</h2>
+                <button class="btn btn-primary" id="nueva-transformacion">
+                    <i class="fas fa-plus"></i> Nueva Transformación
+                </button>
+            </div>
+            
+            <div class="historial-content">
+                <div class="historial-filtros">
+                    <div class="filtro-group">
+                        <label for="filtro-fecha">Filtrar por fecha:</label>
+                        <input type="date" id="filtro-fecha" class="form-input">
+                    </div>
+                    <div class="filtro-group">
+                        <label for="filtro-responsable">Responsable:</label>
+                        <select id="filtro-responsable" class="form-select">
+                            <option value="">Todos</option>
+                            <option value="admin">Administrador</option>
+                            <option value="empleado">Empleado</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-secondary" id="limpiar-filtros-historial">
+                        <i class="fas fa-eraser"></i> Limpiar
+                    </button>
+                </div>
+                
+                <div class="historial-tabla" id="historial-tabla">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/transformacion.js"></script>
+</body>
+
+</html>
